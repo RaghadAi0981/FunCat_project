@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1-float -->
+
+    <style> 
+       
+        #cat{
+            /* float to text */
+            float: left;
+            clear: right;
+            overflow: hidden; 
+            width: 300px;
+            height: 200px;
+            margin: 0 15px 10px 0; /* Better spacing */
+            padding: 1px;
+            border: 4px solid black;
+            transition: transform 0.3s ease-in-out;
+        }
+        #cat:hover {
+    transform: scale(1.1); /* Makes the cat image  bigger */
+}
+        .cat p{
+            text-align: justify;
+            font-size: 20px;
+            line-height: 1.5;
+
+        }
+        h2 {
+        color: black;
+        }
+        h6 {
+        font-style: italic;
+        color: gray;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            align-items: center;
+            padding: auto;
+
+        }
+        nav a:hover {
+            color: #000;
+        }
+        nav ul {
+            text-align: center;
+            /* so the point go away */
+            list-style-type: none;
+            font-size: 18px;
+}
+        nav li{
+            /*  To render the list items horizontally*/
+            display: inline;
+            /* space between the items */
+            margin: 0 10px;
+
+            
+        }
+       
+nav a:link{  /* (without space). */
+/* default state for a hyperlink that has not been clicked (visited) */
+color: #000066;
+}
+a:visited{
+    /* Default state for a visited
+hyperlink */
+color: #000000;
+
+}
+a:focus{
+    /* triggered when the hyperlink has the focus */
+    color: #cecece;
+}
+a:active{
+    /* triggered when the hyperlink is being clicked */
+    color: #FF0000;
+}
+
+        </style>
+        
+</head>
+<body>
+<div id ="wrapper">
+<header></header> <!-- /*header is the top of the page and ypically used for the website's logo,
+    title, and navigation links.*/ -->
+<nav>
+    <ul>
+        <li> <a href="Homecat.html">Home</a></li>
+        <li>  <a href="Poems.html">Poems</a></li>
+        <li>  <a href="JokesOnyou.html">Jokes</a></li>
+
+</ul>
+</nav>
+<!-- main The primary content of the webpage. -->
+<main>
+    <!-- <h2>CSS Box Model</h2> -->
+    <!-- <div class="box">This is a box! </div> -->
+     
+    
+    <h2>🐱 Cat  Heaven 🐱</h2>
+    <div class="cat">
+    <img id ="cat" src="cat.jpg" alt="" >
+    <audio id="meowSound" src="meow.mp3"></audio>
+    <h2>Whiskers in the Moonlight</h2>
+    <p>
+    Silent paws on midnight ground,
+    A shadow moves without a sound.
+    Golden eyes like lanterns bright,
+    Plotting chaos late at night.
+        <br>
+        A stretch, a leap, a sudden race,
+        Then—oops!—it crashed into a vase.
+        A mighty hunter, fierce and bold,
+        Unless the vacuum starts to roll.
+        <br>
+        Ruler of the windowsill,
+        Judge of hoomans, judging still.
+        A creature wise, a life so grand—
+        Yet scared of tape stuck to its hand.</p>
+        </div>
+        
+</main>
+
+<footer>
+    <h6>A poem and joke for the quiet magic of cats 🐾✨</h6>
+    © 2025 Cat Poetry Haven | Meow your heart out!
+
+</footer>   
+
+</div>
+    </div>
+    <script>
+        const catImage = document.getElementById("cat");
+        const meowSound = document.getElementById("meowSound");
+    
+        catImage.addEventListener("mouseover", function () {
+            if (meowSound.paused) { // Prevent multiple overlapping meows
+                meowSound.currentTime = 0; // Restart sound from beginning
+                meowSound.play().catch(error => console.log("Autoplay blocked:", error));
+            }
+        });
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     
+      nav a {
+            text-decoration: none;
+            color: black;
+            align-items: center;
+            padding: auto;
+
+        }
+        nav a:hover {
+            color: #000;
+        }
+        nav ul {
+            text-align: center;
+            /* so the point go away */
+            list-style-type: none;
+            font-size: 18px;
+}
+        nav li{
+            /*  To render the list items horizontally*/
+            display: inline;
+            /* space between the items */
+            margin: 0 10px;
+
+            
+        }
+        #spinner {
+            display: none;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    margin: 20px;
+width: 40px;
+height: 40px;
+animation: spin 1s linear infinite;
+position: relative;
+top: -60px;
+}
+
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+        #poem_container {
+            text-align: center;
+    margin-bottom: 10px; /* Space between poem and button */
+    font-size: 16px;
+        }
+        #new_poem_button {
+            background-color: #917c60;
+    color: white;
+    font-size: 16px; /* Reduced size */
+    font-weight: bold;
+    border: none;
+    padding: 10px 18px; /* Adjusted padding */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #new_poem_button:hover {
+        background-color: #A79277; /* Darker red on hover */
+        transform: scale(1.1); /* Slightly enlarges the button */
+    }
+
+    #new_poem_button:active {
+        background-color: #c5b39c; /* Even darker red when clicked */
+        transform: scale(1); /* Button shrinks back to normal size */
+    }
+    .box{
+        width: 500px;
+    height: 200px; /* Increased height */
+    background-color: white;
+    margin: 90px auto; /* Centering the box */
+    padding: 20px;
+    border: 4px solid #917c60;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+        }
+        #cat{
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+</style>
+<body>
+
+    <nav>
+        <ul>
+        <li> <a href="Homecat.html">Home</a></li>
+       <li>  <a href="Poems.html">Poems</a></li>
+       <li>  <a href="JokesOnyou.html">Jokes</a></li>
+        </ul>
+    </nav>
+    <img id ="cat" src="vic.jpg" alt="" height="500" width="400">
+
+    <div class="box">
+        <audio id="music" src="classic.mp3"></audio> <!-- music sound -->
+        <div id="poem_container">Click the button to get a poem!</div>
+        <button id="new_poem_button">Get a New Poem</button>
+        <div id="spinner"></div>
+        
+    </div>
+
+   
+
+<script>
+        const poems = [
+            "Silent paws on midnight ground, A shadow moves without a sound.",
+            "Golden eyes like lanterns glow, Watching softly, sleek and slow.",
+            "A stretch, a leap, a playful chase, Yet wrapped in calm and boundless grace.",
+            "A whisper purr, a velvet touch, A world of dreams it loves so much.",
+            "Ruler of the windowsill, Sleeping soft yet hunting still.",
+            "A mystery wrapped in fur so fine, This little cat, so wise, divine."
+        ];
+
+       
+
+
+        function showSpinner() {
+    document.getElementById('spinner').style.display = 'block';
+}
+
+function hideSpinner() {
+    document.getElementById('spinner').style.display = 'none';
+}
+
+function fetchPoem() {
+    showSpinner();
+    setTimeout(() => {
+        const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+        const poemContainer = document.getElementById('poem_container');
+        poemContainer.innerHTML = `<p><strong>Cat Poem:</strong><br>${randomPoem}</p>`;
+
+        // Check if laughSound exists before playing
+        const music = document.getElementById('music');
+        if (music) {
+            music.play().catch(error => console.log("Autoplay blocked:", error));
+        }
+
+        hideSpinner(); // Ensure spinner is hidden
+    }, 1000);
+}
+
+document.getElementById('new_poem_button').addEventListener('click', fetchPoem);
+
+    </script>
+</body>
+</html>
